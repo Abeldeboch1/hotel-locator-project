@@ -1,55 +1,73 @@
 import Header from './components/Header';
-import styled from 'styled-components';
-import { Grid } from '@material-ui/core';
 import GlobalStyle from './globalStyle';
 import { useEffect, useState } from 'react';
-import List from './components/List';
-import MyComponent from './components/Map';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
+import List from './components/list';
+import Map from './components/Map';
 
 const App = () => {
-const [places, setPlaces] = useState([])
-const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  const [places, setPlaces] = useState([])
+  const [coordinates, setCoordinates] = useState({ lat: -3.745,  lng: -38.523});
   const [bounds, setBounds] = useState({});
 
-useEffect( () => {
-fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=Hotels&latitude=37.786882&longitude=-122.399972&limit=2`, {
-  headers: {
-    Authorization: 'Bearer 4qYnQWEe5NDiKlIVY2bDZNwBqWbpyRrscNfGJga7Vo-UZiqWZNfsxs5iTT42jPMg6iTFGV4NYlM6tiwRddSMXh6nnsAyFXwg9SY0rz2uCI3jXE8pW9rYELiMCNhyYnYx'  
-  }
-})
-.then((res) => res.json())
-.then((data) =>{
-  setPlaces(data);
-  console.log(data)
-})
-.catch((error) => console.log(error))
-}, [])
 
-  return (      <>
+  useEffect(() => {
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=Hotels&latitude=37.786882&longitude=-122.399972&limit=50`, {
+      headers: {
+        Authorization: 'Bearer 4qYnQWEe5NDiKlIVY2bDZNwBqWbpyRrscNfGJga7Vo-UZiqWZNfsxs5iTT42jPMg6iTFGV4NYlM6tiwRddSMXh6nnsAyFXwg9SY0rz2uCI3jXE8pW9rYELiMCNhyYnYx'
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        console.log(data.businesses[0].id)
+        console.log(data.businesses[0].name);
+        console.log(data.region.center.longitude);
+        // setPlaces(data)
+        setPlaces(data.businesses)
+      }
+      )
+      .catch((error) => console.log(error))
+  }, [])
+
+useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({
+          lat: latitude,
+          lng: longitude,
+        });
+      }
+    );
+  }, []);
+
+  //  useEffect(() => {
+  //   console.log(coordinates, bounds);
+  //   // Answer: here -> getPlacesData(bounds?.sw, bounds?.ne).then((data) => {….. where i receive this data
+  //   // getPlacesData(bounds.sw, bounds.ne)
+
+  //       setPlaces(data);
+  //     })
+  // }, [coordinates, bounds ]);
+
+  return (
+    <>
       <GlobalStyle />
       <Header />
-      <Grid container spacing={3} style={{ width: '100%' }}>     
-        <Grid item xs={12} md={8}>
-          <MyComponent
-                 setBounds={setBounds}
-                 coordinates={coordinates}
-                 setCoordinates={setCoordinates}
-              //  setChildClicked={setChildClicked}
-              //  places={filteredPlaces.length ? filteredPlaces : places}
+      <div >
+        <div >
+          <Map  
+           setBounds={setBounds}
+            coordinates={coordinates}
+            setCoordinates={setCoordinates}
           />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <List/>
-        </Grid>
-    
-      </Grid>
+        </div>
+       li
+        <div >
+          <List places ={places}/>
+        </div>
+      </div>
     </>
+
   );
 }
 

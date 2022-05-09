@@ -1,29 +1,18 @@
 import React from 'react'
 import PlaceDetails from './PlaceDetails/PlaceDetails';
-// import { useState } from 'react';
-import {Grid } from '@material-ui/core';
-import { useStyles } from '../Utils/globalStyle';
 
-const List = () => {
-  const places = [
-    {name: "List1 "},
-    {name: "List2 "},
-    {name: "List3 "},
-    {name: "List4 "},
-    {name: "List5 "},
-    {name: "List6"},
-    {name: "List7 "},
-]
-  const classes = useStyles();
-    // const [type, setType] = useState('restaurants');
+
+
+const List = ({places}) => {
+ 
   return (
-    <Grid container spacing={3} className={classes.list}>
+    <div >
         {places?.map((place, i) => (
-                <Grid item key={i} xs={12} >
+                <div item key={i} >
                     <PlaceDetails place = {place}/>
-                </Grid>
+                </div>
             ))}
-    </Grid>
+    </div>
 )
 }
 export default List;

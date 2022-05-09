@@ -6,21 +6,21 @@ const containerStyle = {
   height: '400px'
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
+// const center = {
+//   lat: -3.745,
+//   lng: -38.523
+// };
 
 function MyComponent({setCoordinates, setBounds, coordinates}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCE-weop7ZOan0050zwgtZyVOmmZo3omRs"
+    googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
   })
 
   const [map, setMap] = React.useState(null)
 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds(coordinates);
     map.fitBounds(bounds);
     setMap(map)
   }, [])
@@ -34,17 +34,16 @@ function MyComponent({setCoordinates, setBounds, coordinates}) {
         mapContainerStyle={containerStyle}
         defaultCenter= {coordinates}
         center={coordinates}
-        zoom={14}
+        // zoom={1}
         onLoad={onLoad}
         onUnmount={onUnmount}
-        // margin = {[50, 50, 50, 50]}
         options= {''}
         onChange={(e) => {
-          console.log(e)
-          setCoordinates({
-            lat: e.center.lat,
-            lng: e.center.lng,
-          });
+          // console.log(e)
+          // setCoordinates({
+          //   lat: e.center.lat,
+          //   lng: e.center.lng,
+          // });
           setBounds({
               ne: e.marginBounds.ne,
               sw: e.marginBounds.sw
