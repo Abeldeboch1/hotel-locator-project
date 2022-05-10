@@ -13,16 +13,16 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({ lat: 30.332184, lng: -81.655647 });
   const [bounds, setBounds] = useState({});
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
-        setCoordinates({
-          lat: latitude,
-          lng: longitude,
-        });
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(
+  //     ({ coords: { latitude, longitude } }) => {
+  //       setCoordinates({
+  //         lat: latitude,
+  //         lng: longitude,
+  //       });
+  //     }
+  //   );
+  // }, []);
   useEffect(() => {
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=Hotels&latitude=37.786882&longitude=-122.399972&limit=50`, {
       headers: {
@@ -40,7 +40,7 @@ const App = () => {
       }
       )
       .catch((error) => console.log(error))
-  }, [coordinates, bounds])
+  }, [])
 
 
 

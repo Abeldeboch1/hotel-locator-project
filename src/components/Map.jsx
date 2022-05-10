@@ -49,11 +49,11 @@ function MyComponent({ setCoordinates, setBounds, coordinates }) {
         onUnmount={onUnmount}
         options={''}
         onChange={(e) => {
-          console.log(e)
-          setCoordinates({
-            lat: e.center.lat,
-            lng: e.center.lng,
-          });
+          // console.log(e)
+          // setCoordinates({
+          //   lat: e.center.lat,
+          //   lng: e.center.lng,
+          // });
           setBounds({
             ne: e.marginBounds.ne,
             sw: e.marginBounds.sw
