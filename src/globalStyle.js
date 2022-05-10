@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: #fefefe;
-    // color: #333;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     button {

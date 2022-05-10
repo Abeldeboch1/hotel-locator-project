@@ -3,13 +3,26 @@ import GlobalStyle from './globalStyle';
 import { useEffect, useState } from 'react';
 import List from './components/list';
 import Map from './components/Map';
+import { Grid } from '@material-ui/core';
+import styled from 'styled-components';
+
 
 const App = () => {
   const [places, setPlaces] = useState([])
-  const [coordinates, setCoordinates] = useState({ lat: -3.745,  lng: -38.523});
+  // const [coordinates, setCoordinates] = useState({ lat: -3.745, lng: -38.523 });
+  const [coordinates, setCoordinates] = useState({ lat: 30.332184, lng: -81.655647 });
   const [bounds, setBounds] = useState({});
 
-
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({
+          lat: latitude,
+          lng: longitude,
+        });
+      }
+    );
+  }, []);
   useEffect(() => {
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=Hotels&latitude=37.786882&longitude=-122.399972&limit=50`, {
       headers: {
@@ -27,18 +40,9 @@ const App = () => {
       }
       )
       .catch((error) => console.log(error))
-  }, [])
+  }, [coordinates, bounds])
 
-useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
-        setCoordinates({
-          lat: latitude,
-          lng: longitude,
-        });
-      }
-    );
-  }, []);
+
 
   //  useEffect(() => {
   //   console.log(coordinates, bounds);
@@ -53,19 +57,18 @@ useEffect(() => {
     <>
       <GlobalStyle />
       <Header />
-      <div >
-        <div >
-          <Map  
-           setBounds={setBounds}
-            coordinates={coordinates}
-            setCoordinates={setCoordinates}
-          />
-        </div>
-       li
-        <div >
-          <List places ={places}/>
-        </div>
-      </div>
+      <Grid container  >
+      <Grid item xs={12} md={4}>
+          <List places={places} />
+        </Grid>
+          <Grid item xs={12} md={8}>
+            <Map
+              setBounds={setBounds}
+              coordinates={coordinates}
+              setCoordinates={setCoordinates}
+            />
+          </Grid>     
+      </Grid>
     </>
 
   );
