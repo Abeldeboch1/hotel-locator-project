@@ -44,6 +44,17 @@ const App = () => {
 
 
 
+// useEffect(() => {
+//     navigator.geolocation.getCurrentPosition(
+//       ({ coords: { latitude, longitude } }) => {
+//         setCoordinates({
+//           lat: latitude,
+//           lng: longitude,
+//         });
+//       }
+//     );
+//   }, []);
+/////////////////////////////////////
   //  useEffect(() => {
   //   console.log(coordinates, bounds);
   //   // Answer: here -> getPlacesData(bounds?.sw, bounds?.ne).then((data) => {….. where i receive this data
