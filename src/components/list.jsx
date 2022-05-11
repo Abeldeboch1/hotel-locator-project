@@ -2,12 +2,10 @@ import React from 'react'
 import PlaceDetails from './PlaceDetails';
 import styled from 'styled-components';
 
-
 const ListWrapper = styled.div`
 height: '75vh',
 overflow: 'auto',
 `;
-
 
 const List = ({places}) => {
  
