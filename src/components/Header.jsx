@@ -16,8 +16,8 @@ top: 0;
   input:hover {
     border-color: red;
   }
-
 `;
+
 
 const Header = () => {
     const [city, setCity] = useState('')
