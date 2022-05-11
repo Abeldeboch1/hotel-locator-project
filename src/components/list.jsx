@@ -1,18 +1,25 @@
 import React from 'react'
 import PlaceDetails from './PlaceDetails/PlaceDetails';
-
+import styled from 'styled-components';
+const ListWrapper = styled.div`
+height: '75vh',
+overflow: 'auto',
+`;
 
 
 const List = ({places}) => {
  
   return (
-    <div >
+    <ListWrapper >
         {places?.map((place, i) => (
                 <div item key={i} >
-                    <PlaceDetails place = {place}/>
+                  <ss>
+                  <PlaceDetails place = {place}/>
+                  </ss>
+                   
                 </div>
             ))}
-    </div>
+    </ListWrapper>
 )
 }
 export default List;

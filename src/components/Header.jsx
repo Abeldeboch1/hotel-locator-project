@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
+position: sticky;   
+top: 0; 
   align-items: center;
   background-color: #344;
   color: #fefefe;
@@ -24,7 +26,7 @@ const Header = () => {
         <HeaderWrapper>
             <form action="/" method="get">
                 <label htmlFor="header-search">
-                    <h2> RESTAURANT SEARCH FOR: {city}</h2>
+                    <h2> HOTEL SEARCH FOR: {city}</h2>
                 </label>
                 <input
                     className="search-text"
