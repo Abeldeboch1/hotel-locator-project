@@ -22,7 +22,7 @@ const filterPosts = (places, query) => {
    
   });
 };
-const List = ({ places, locations, setLocations }) => {
+const List = ({ places, locations, setLocations, runSearch  }) => {
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
   const [searchQuery, setSearchQuery] = useState(query || '');
@@ -31,6 +31,7 @@ const List = ({ places, locations, setLocations }) => {
   return (
     <>
       <Header
+        runSearch = {runSearch}
         searchQuery={searchQuery}
         locations = {locations}
         setLocations = {setLocations}

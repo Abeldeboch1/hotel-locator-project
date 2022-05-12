@@ -25,16 +25,17 @@ top: 0;
   // const [city, setCity] = useState('')
 
 
-  const Header = ({ searchQuery, setSearchQuery ,locations, setLocations}) => {
+const Header = ({ searchQuery, setSearchQuery, locations, setLocations,
+runSearch }) => {
     // const [city, setCity] = useState('')
     const history = useNavigate();
     const onSubmit = (e) => {
-        history.push(`?s=${searchQuery}`);
-        e.preventDefault();
+      e.preventDefault();
+      runSearch(); 
     };
   return (
     <HeaderWrapper>
-      <form action="/" method="get" autoComplete="off" onSubmit={onSubmit}>
+      <form  autoComplete="off" onSubmit={onSubmit} >
         <label htmlFor="header-search">
           <h4> HOTEL SEARCH FOR: {searchQuery}</h4>
         </label>

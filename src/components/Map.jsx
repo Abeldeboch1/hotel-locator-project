@@ -14,12 +14,6 @@ const containerStyle = {
   height: '570px',
   position: 'fixed'
 };
-
-const ccoordinates = {
-  lat: 30.332184,
-  lng: -81.655647,
-};
-
 function MyComponent({ setCoordinates, setBounds, coordinates, places }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -49,7 +43,7 @@ function MyComponent({ setCoordinates, setBounds, coordinates, places }) {
 
         defaultCenter={coordinates}
         center={coordinates}
-        zoom={10}
+        zoom={8}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={''}
