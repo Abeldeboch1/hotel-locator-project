@@ -35,7 +35,7 @@ const Layout = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header />
+        {/* <Header /> */}
         <Outlet />
         <Footer />
       </Wrapper>

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 import { LocationOn, Phone } from "@material-ui/icons";
+import {CardMedia} from "@material-ui/core";
 const HeaderWrapper = styled.header`
   align-items: center;
   background-color: #fffdf2;
   border: 0.2px solid ${({ color }) => color || "black"};
-  // box-shadow: 10px 10px;
   padding: 1rem 1.5rem;
 `;
 const RatWrapper = styled.div`
@@ -25,6 +25,12 @@ const PlaceDetails = ({ place }) => {
   return (
 
     <HeaderWrapper>
+        <CardMedia
+            style={{height: 200}}
+            title={place.name}
+            // image={place.image ? place.image.large.url : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"}
+            image={place.image ? place.image.large.url : "noImage"}
+        />
       <h3 > {place.name}</h3>  
       <RatWrapper>
         <ul>
@@ -46,7 +52,6 @@ const PlaceDetails = ({ place }) => {
       </RatWrapper>   
     <button onClick={() => { window.open(place.url, "_blank"); }}> Website </button>  
     </HeaderWrapper>
-
   )
 };
 export default PlaceDetails;
