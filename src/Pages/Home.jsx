@@ -11,21 +11,9 @@ const HomeWrapper = styled.div`
 `;
 const Home = () => {
     const [places, setPlaces] = useState([])
-    // const [coordinates, setCoordinates] = useState({ lat: 30.332184, lng: -81.655647 });
-    // 37.733795, -122.446747
     const [coordinates, setCoordinates] = useState({ lat:37.733795, lng:-122.446747});
     const [bounds, setBounds] = useState({});
 
-    // useEffect(() => {
-    //   navigator.geolocation.getCurrentPosition(
-    //     ({ coords: { latitude, longitude } }) => {
-    //       setCoordinates({
-    //         lat: latitude,
-    //         lng: longitude,
-    //       });
-    //     }
-    //   );
-    // }, []);
     useEffect(() => {
         fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=Hotels&latitude=37.786882&longitude=-122.399972&limit=50`, {
             headers: {
