@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import {useNavigate} from 'react-router-dom';
 const HeaderWrapper = styled.header`
 position: sticky;   
 top: 0; 
@@ -17,29 +17,37 @@ top: 0;
     border-color: red;
   }
 `;
+const Header = ({ searchQuery, setSearchQuery, locations, setLocations,
+runSearch }) => {
+    const history = useNavigate();
+    const onSubmit = (e) => {
+      e.preventDefault();
+      runSearch(); 
+    };
+  return (
+    <HeaderWrapper>
+      <form  autoComplete="off" onSubmit={onSubmit} >
+        <label htmlFor="header-search">
+          <h4> HOTEL SEARCH FOR: {searchQuery}</h4>
+        </label>
+        <input
 
+          className="search-text"
+          type="text"
+         
+          placeholder="Type to search....."
+          value={locations}
 
-const Header = () => {
-    const [city, setCity] = useState('')
+          onChange={(e) => setLocations(e.target.value)}
+          id="header-search"
+          name="s"
 
-    return (
-        <HeaderWrapper>
-            <form action="/" method="get">
-                <label htmlFor="header-search">
-                    <h2> HOTEL SEARCH FOR: {city}</h2>
-                </label>
-                <input
-                    className="search-text"
-                    type="text"
-                    name=""
-                    value={city}
-                    placeholder="Type to search....."
-                    onChange={(e) => { setCity(e.target.value) }}
-                />
-                <button type="submit" >Search</button>
-            </form>
-        </HeaderWrapper>
-
-    );
+        />
+        <button type="submit" >Search</button>
+      </form>
+      
+    </HeaderWrapper>
+  );
 }
 export default Header;
+
