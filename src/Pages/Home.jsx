@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import List from '../components/list';
+import List from '../components/List';
 import Map from '../components/Map';
 import getLocation from '../Utils/Location';
 
