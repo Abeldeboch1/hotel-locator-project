@@ -2,11 +2,8 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import GlobalStyle from '../globalStyle';
-<<<<<<< HEAD
-=======
 // import Headerr from '../components/Headerr';
 import Header from '../components/Header';
->>>>>>> main
 import Footer from '../components/Footer';
 const Wrapper = styled.div`
   display: flex;
@@ -38,11 +35,7 @@ const Layout = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-<<<<<<< HEAD
-         <Outlet />
-=======
         <Outlet />
->>>>>>> main
         <Footer />
       </Wrapper>
     </>

@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
-position: fixed;   
-top: 530px; 
+position: fixed; 
+
+top: 700px; 
 width:100%;
 background-color: #344;
 color: orange;

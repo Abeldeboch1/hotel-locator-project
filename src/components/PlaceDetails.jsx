@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import { LocationOn, Phone } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import {lighten} from '../Utils/styleMethods';
 const HotelWrapper = styled.header`
 border: 1px solid;
   padding: 10px;
   box-shadow: 5px 10px orange;
   padding: 0.5rem;
-  &hover {
-    color: red;
+  &:hover {
+    ${lighten('#009900', 0.8)}
+    cursor: pointer;
+    p {
+      color: #000099;
+    }
   }
   .hotelList{
   font-family: cursive;

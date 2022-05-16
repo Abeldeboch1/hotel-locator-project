@@ -9,8 +9,8 @@ const
   position: fixed; 
 `;
 const containerStyle = {
-  width: '890px',
-  height: '530px',
+  width: '1200px',
+  height: '700px',
   position: 'fixed'
 };
 function Map({ setCoordinates, coordinates, places,id }) {
