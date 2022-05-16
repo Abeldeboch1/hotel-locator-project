@@ -14,6 +14,7 @@ const RatWrapper = styled.div`
     list-style-type: none;
   }
   li {
+     padding-top: 2px;
     padding-left: 1.5rem;
     &:first-child {
       padding-left: 0;
@@ -28,7 +29,6 @@ const PlaceDetails = ({ place }) => {
         <CardMedia
             style={{height: 200}}
             title={place.name}
-            // image={place.image ? place.image.large.url : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"}
             image={place.image ? place.image.large.url : "noImage"}
         />
       <h3 > {place.name}</h3>  

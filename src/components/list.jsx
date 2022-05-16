@@ -13,7 +13,6 @@ const filterPosts = (places, query) => {
   if (!query) {
     return places;
   }
-
   return places.filter((post) => {
     const postName = post.location.city.toLowerCase();
     const postmanfilter = postName.includes(query);
@@ -26,7 +25,6 @@ const List = ({ places, locations, setLocations, runSearch  }) => {
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
   const [searchQuery, setSearchQuery] = useState(query || '');
-  // const filteredPosts = filterPosts(places, searchQuery);
   const filteredPosts = places;
   return (
     <>

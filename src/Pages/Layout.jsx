@@ -2,9 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import GlobalStyle from '../globalStyle';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,8 +33,7 @@ const Layout = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-        {/* <Header /> */}
-        <Outlet />
+         <Outlet />
         <Footer />
       </Wrapper>
     </>

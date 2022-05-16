@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const HeaderWrapper = styled.header`
 position: sticky;   
 top: 0; 
@@ -17,8 +17,7 @@ top: 0;
     border-color: red;
   }
 `;
-const Header = ({ searchQuery, setSearchQuery, locations, setLocations,
-runSearch }) => {
+const Header = ({ searchQuery, setSearchQuery, locations, setLocations, runSearch }) => {
     const history = useNavigate();
     const onSubmit = (e) => {
       e.preventDefault();
@@ -26,7 +25,9 @@ runSearch }) => {
     };
   return (
     <HeaderWrapper>
-      <form  autoComplete="off" onSubmit={onSubmit} >
+      <form
+        // autoComplete="off" onSubmit={onSubmit}
+      >
         <label htmlFor="header-search">
           <h4> HOTEL SEARCH FOR: {searchQuery}</h4>
         </label>
