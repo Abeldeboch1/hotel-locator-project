@@ -3,7 +3,6 @@ import axios from "axios";
 const getLocation = async (location) => {
     try{
        return await axios.get(`https://geocode.maps.co/search?q=${location}`);
-        // return results;
     } catch (error) {
         console.error(`Error: ${error}`)
     }
