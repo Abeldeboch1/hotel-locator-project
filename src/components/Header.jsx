@@ -1,17 +1,40 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {useNavigate} from 'react-router-dom';
-
+import Announcer from '../announcer';
 
 const HeaderWrapper = styled.header`
-position: sticky;   
-top: 0; 
+  position: sticky;   
+  top: 0; 
   align-items: center;
   background-color: #344;
   color: #fefefe;
-  display: flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
+  & > a{
+    text-decoration: none;
+}
+.searchHotel{
+  font-family: cursive;
+  color: orange;
+  margin:0.5px;
+}
+.searchHotelfor{
+  margin:0.5px;
+}
+.searchHotelinput{
+  margin:0.5px;
+  padding:2px;
+}
+.searchHotelButton{
+  margin:0.5px;
+  padding:1px;
+}
+
+h2{
+  font-family: cursive;
+  color: #fefe;
+  margin:0.5px;
+}
   input {
     padding: 0.5rem;
   }
@@ -20,100 +43,32 @@ top: 0;
   }
 `;
 
-
-// const Header = () => {
-  // const [city, setCity] = useState('')
-
-
-const Header = ({ searchQuery, setSearchQuery, locations, setLocations,
-runSearch }) => {
-    // const [city, setCity] = useState('')
-    const history = useNavigate();
-    const onSubmit = (e) => {
-      e.preventDefault();
-      runSearch(); 
-    };
+const Header = ({locations, setLocations,
+  runSearch, filteredPosts}) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    runSearch();
+  };
   return (
     <HeaderWrapper>
-      <form  autoComplete="off" onSubmit={onSubmit} >
+        <h2>Hotel Search Map</h2>
+      <form autoComplete="off" onSubmit={onSubmit} >
         <label htmlFor="header-search">
-          <h4> HOTEL SEARCH FOR: {searchQuery}</h4>
+          <h4 className='searchHotelfor'> FOR: <spam className='searchHotel'>{locations}</spam></h4>
         </label>
         <input
-
-          className="search-text"
+        className='searchHotelinput'
           type="text"
-          // name=""
           placeholder="Type to search....."
-          // onChange={(e) => { setCity(e.target.value) }}
-          // value={searchQuery}
           value={locations}
-
           onChange={(e) => setLocations(e.target.value)}
-          id="header-search"
-          name="s"
-
         />
-        <button type="submit" >Search</button>
+        <button  className='searchHotelButton' type="submit" >Search</button>
+        <Announcer 
+        message={`There are ${filteredPosts.length} Hotels.`}
+      />
       </form>
-      {/* <form
-        action="/"
-        method="get"
-        autoComplete="off"
-        onSubmit={onSubmit}
-      >
-        <label htmlFor="header-search">
-
-        </label>
-        <input
-          value={searchQuery}
-          onInput={(e) => setSearchQuery(e.target.value)}
-          type="text"
-          id="header-search"
-          placeholder="Search blog posts"
-          name="s"
-        />
-        <button type="submit">Search</button>
-      </form>
-      dddd */}
     </HeaderWrapper>
-
   );
 }
 export default Header;
-// import {useNavigate} from 'react-router-dom';
-
-// const SearchBar = ({ searchQuery, setSearchQuery }) => {
-//   const navigate = useNavigate();
-//     // const history = useHistory();
-//     const onSubmit = (e) => {
-//       navigate.push(`?s=${searchQuery}`);
-//         e.preventDefault();
-//     };
-
-//     return (
-//         <form
-//             action="/"
-//             method="get"
-//             autoComplete="off"
-//             onSubmit={onSubmit}
-//         >
-//             <label htmlFor="header-search">
-//                 <span className="visually-hidden">
-//                     Search blog posts
-//                 </span>
-//             </label>
-//             <input
-//                 value={searchQuery}
-//                 onInput={(e) => setSearchQuery(e.target.value)}
-//                 type="text"
-//                 id="header-search"
-//                 placeholder="Search blog posts"
-//                 name="s"
-//             />
-//             <button type="submit">Search</button>
-//         </form>
-//     );
-// };
-
-// export default SearchBar;

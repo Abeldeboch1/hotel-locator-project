@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 import { LocationOn, Phone } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-
 const HotelWrapper = styled.header`
 border: 1px solid;
   padding: 10px;
@@ -16,25 +14,15 @@ border: 1px solid;
   font-family: cursive;
  margin:1px;
   }
-  .classNameTitle{
-  font-family: cursive;
- color:#ff4500;
-
- margin:1px;
-  }
   }
 `;
 
 
-const PlaceDetails = ({ place }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const displayHotel = (e) => {
-    navigate(`/postHotel/${parseInt(id)}`);
-  }
+const postHotel = ({ place }) => {
+    const navigate = useNavigate();
   return (
-     <HotelWrapper  onClick={displayHotel}>
-      <h3 className='classNameTitle'> {place.name}</h3>  
+     <HotelWrapper  onClick={() => navigate(`/posts/${id}`)}>
+      <h3 classNameTitle='hotelList'> {place.name}</h3>  
       <p className='hotelList'> Rating <spam>{place.rating} </spam></p>
       <p className='hotelList'> <LocationOn /> <spam>{place.location.address1}  {place.location.city}  {place.location.country}  </spam></p>
       <p className='hotelList'> <Phone /> <spam>{place.display_phone} </spam><button onClick={() => { window.open(place.url, "_blank"); }}> Website </button> </p>
@@ -42,4 +30,4 @@ const PlaceDetails = ({ place }) => {
     </HotelWrapper>    
   )
 };
-export default PlaceDetails;
+export default postHotel;

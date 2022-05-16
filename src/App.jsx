@@ -2,8 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Pages/Layout';
 import Home from './Pages/Home';
-import AddPost from './Pages/AddPost';
-import FullPost from './Pages/FullPost';
+
 import NotFound from './Pages/NotFound';
 
 const App = () => {
@@ -11,9 +10,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         divvvv
-        <Route index element={<Home/>} />
-        <Route path="add" element={<AddPost />} />
-        <Route path="posts/:id" element={<FullPost />} />
+        <Route index element={<Home/>} /> 
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
