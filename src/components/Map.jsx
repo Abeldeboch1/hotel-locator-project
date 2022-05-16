@@ -4,52 +4,49 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 import { useNavigate } from "react-router-dom";
 const
   MapWrapper = styled.div`
-  width: 842px;
-  height: 450px;
+  width: 800px;
+  height: 300px;
   position: fixed; 
 `;
 const containerStyle = {
   width: '890px',
-  height: '570px',
+  height: '530px',
   position: 'fixed'
 };
-function MyComponent({ setCoordinates, setBounds, coordinates, places }) {
+function Map({ setCoordinates, coordinates, places,id }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
    
 })
   const navigate = useNavigate();
-  const [map, setMap] = React.useState(null)
   const [selected, setSelected] = useState(null)
-
-  const onSelectRest = (id) => {
+  const hotelDetail = (id) => {
     navigate(`/place-details/${parseInt(id)}`);
   }
-  const onLoad = React.useCallback(function callback(map) {
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
 
   return isLoaded ? (
     <MapWrapper>
       <GoogleMap
         mapContainerStyle={containerStyle}
-
-        defaultCenter={coordinates}
         center={coordinates}
         zoom={14}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+        // onLoad={onLoad}
+        // onUnmount={onUnmount}
         options={''}
-        onChange={(e) => {
-        }}
       >
         {places.map((place) => (
-          < Marker position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude }}
+          < Marker
+          icon={{
+            path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+            fillColor: "Orange",
+            fillOpacity: 2,
+            strokeWeight: 0,
+            rotation: 0,
+            scale: 2,
+          }} 
+   
+          position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude }}
             onClick={() => {
               console.log("first")
               setSelected(place);
@@ -60,7 +57,8 @@ function MyComponent({ setCoordinates, setBounds, coordinates, places }) {
           <InfoWindow
             position={{ lat: selected.coordinates.latitude, lng: selected.coordinates.longitude }}
             onCloseClick={() => { setSelected(null); }}>
-            <div className='restName' onClick={() => onSelectRest(selected.location_id)}>
+            <div onClick={() => hotelDetail(selected.location_id)}>
+            {/* <div > */}
               <h2>Name:{selected.name}</h2>  <h5>Rating:{selected.rating} </h5>
               <button> <p> Phone Number: {selected.display_phone}</p></button>
               <button onClick={() => { window.open(selected.url, "_blank"); }}> Website </button>
@@ -73,7 +71,8 @@ function MyComponent({ setCoordinates, setBounds, coordinates, places }) {
     </MapWrapper>
   ) : <></>
 }
-export default React.memo(MyComponent)
+
+export default React.memo(Map)
 
 
 // await axios.get(`https://geocode.maps.co/search?q=${location}`);
