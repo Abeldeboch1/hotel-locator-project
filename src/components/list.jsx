@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PlaceDetails from './PlaceDetails';
 import styled from 'styled-components';
-import Header from '../components/Header';
+import Header from './Header';
 const ListWrapper = styled.div`
 // height: '50vh',
 overflow: 'auto',
@@ -11,7 +11,6 @@ const filterPosts = (places, query) => {
   if (!query) {
     return places;
   }
-
   return places.filter((post) => {
     const postName = post.location.city.toLowerCase();
     const postmanfilter = postName.includes(query);
