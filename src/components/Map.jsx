@@ -22,7 +22,7 @@ function Map({ setCoordinates, coordinates, places,id }) {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
   const hotelDetail = (id) => {
-    navigate(`/place-details/${parseInt(id)}`);
+    navigate(`/PostHotel/${parseInt(id)}`);
   }
 
   return isLoaded ? (
@@ -31,8 +31,6 @@ function Map({ setCoordinates, coordinates, places,id }) {
         mapContainerStyle={containerStyle}
         center={coordinates}
         zoom={14}
-        // onLoad={onLoad}
-        // onUnmount={onUnmount}
         options={''}
       >
         { /* Child components, such as markers, info windows, etc. */}
@@ -60,7 +58,6 @@ function Map({ setCoordinates, coordinates, places,id }) {
             position={{ lat: selected.coordinates.latitude, lng: selected.coordinates.longitude }}
             onCloseClick={() => { setSelected(null); }}>
             <div onClick={() => hotelDetail(selected.location_id)}>
-            {/* <div > */}
               <h2>Name:{selected.name}</h2>  <h5>Rating:{selected.rating} </h5>
               <p> Phone Number: {selected.display_phone}</p>
               <button onClick={() => { window.open(selected.url, "_blank"); }}> Website </button>

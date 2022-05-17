@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# `Hotel Locator React Project`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app build up with existing knowledge of the React basics (components, JSX, props, event handling, using forms, making API calls, basic hooks) and also utilize newer skills like handling styles using styled-components and conditionally rendering components using react-router-dom.
 
-## Available Scripts
+# `Project Requirements`
 
+This project app used styled-components for styling rather than scss/regular css.
+The app used react-router-dom for conditional rendering of your different "page" elements.
+The app used a React-specific mapping package and load search results onto the map as pushpins. It has a search bar that allows a user to specify a new location to search in. After user search, the map should recenter and show results in the new location.
+Pull data from your external API using fetch. The app runs a search for results in the default location upon render, displays search results, and displays pushpins for those results on the map.
+It has a separate location details "page" that the user can navigate to by clicking on a search result (and maybe even by clicking on a map pushpin). This location details component should NOT receive its data via props and should instead use useEffect() to pull location details from the API after initial render.
+This project app Hide any API keys using a .env file. Remember to add the .env file to your .gitignore so that it is not uploaded to GitHub!
+Your app should have multiple components. Use props to pass data from parent components into child components to allow customization of the child components.
+
+# `Project Setup / Build Instructions`
+
+Install required packages
+Open the Package Manager Console
+Type and run nuget restore.
 In the project directory, you can run:
 
-### `npm start`
+# `Running the Project`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Click Run Project button or hit F5.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# ` Development Process`
 
-### `npm test`
+Increment Assembly Version
+When starting work on a new release version, increment the minor version
+Right-click on the main project and go to Properties > Application > Assembly Information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# `Deployment Process`
 
-### `npm run build`
+Increment Assembly Information
+Right-click on the main project and go to Properties > Application > Assembly Information
+Increment File version
+Increment
+View Properties on the MagtekCardReaderMiddleware project
+Increment the Version field (ideally it should match the File version from above
+Click YES on the popup asking to change the ProductCode
+Build the release version
+Set build mode to Release
+Clean and Rebuild the main project
+Rebuild the Setup Project
+Create deployment zip file
+Create a new folder in the PublishedInstallers folder. Match the existing naming convention and use the version number as found on the config page of the application
+Copy the Release installer files into this new folder. These are located in MagtekCardReaderMiddlewareSetup/Release
+Create a zip file from the folder
+Update the release notes file
+Check in and merge project to Github
+Check in the project and create a PR into Development
+After PR is merged, create a PR into Main
+Create a Release on Github
+After PR is merged, go to Releases on Github and click on Create New Release
+For the tag version, enter the full version Number. For example: v1.3.6543.18931
+The target for the release should be the Main branch (default option)
+For the release title, enter: Magtek Card Reader Middleware Release vX.X where x.x is the first two digits of the release number
+Copy the release notes into the release description textbox
+Attach the installer zip file in the upload area
+Click Publish Release
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# `Link to Wiki for additional info`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is where additional info will go, such as user documentation, server setup, installation instructions, troubleshooting steps, gotchas, etc...
