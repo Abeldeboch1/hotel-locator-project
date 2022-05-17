@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import List from '../components/List';
-import Map from '../components/Map';
+import List from './List';
+import Map from './Map';
 import getLocation from '../Utils/Location';
+import PostHotel from '../Pages/PostHotel'
+import LocationContext from '../context/LocationContext'
 
 const HomeWrapper = styled.div`
     display: flex;
@@ -14,6 +16,7 @@ const Home = () => {
     const [locations, setLocations] = useState("Denver, CO");
     const [places, setPlaces] = useState([])
     const [coordinates, setCoordinates] = useState({ lat: 30.3321838, lng: -81.655651 });
+
     const runSearch = (id) => {
         getLocation(locations)
             .then((res) => {
@@ -39,18 +42,22 @@ const Home = () => {
     return (
         <>
             <HomeWrapper container  >
-                <div1>
-                    <List places={places} locations={locations} setLocations={setLocations}
-                        runSearch={runSearch} />
-                </div1>
-                <div2 >
-                    <Map
-                        places={places}
-                        coordinates={coordinates}
-                        setCoordinates={setCoordinates}
-                    />
-                </div2>
+                <LocationContext.Provider value={{places:places}}>
+                    <div1>
+                        <List places={places} locations={locations} setLocations={setLocations}
+                            runSearch={runSearch} />
+                    </div1>
+                    
+                    <div2 >
+                        <Map
+                            places={places}
+                            coordinates={coordinates}
+                            setCoordinates={setCoordinates}
+                        />
+                    </div2>
+                </LocationContext.Provider>
             </HomeWrapper>
+
         </>
     );
 }

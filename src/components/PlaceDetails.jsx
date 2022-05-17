@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { LocationOn, Phone } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import {lighten} from '../Utils/styleMethods';
+import  {lighten}  from '../Utils/styleMethods';
 const HotelWrapper = styled.header`
 border: 1px solid;
   padding: 10px;
@@ -16,6 +16,11 @@ border: 1px solid;
       color: #000099;
     }
   }
+  .hotelListwebsite{
+    color:green;
+    padding-left:100px;
+
+  }
   .hotelList{
   font-family: cursive;
  margin:1px;
@@ -23,18 +28,16 @@ border: 1px solid;
   .classNameTitle{
   font-family: cursive;
  color:#ff4500;
-
  margin:1px;
   }
   }
 `;
 
+const PlaceDetails = ({ place, id}) => {
 
-const PlaceDetails = ({ place }) => {
-  const { id } = useParams();
   const navigate = useNavigate();
   const displayHotel = (e) => {
-    navigate(`/postHotel/${parseInt(id)}`);
+    navigate(`/postHotel/${id}`);
   }
   return (
      <HotelWrapper  onClick={displayHotel}>
@@ -42,9 +45,14 @@ const PlaceDetails = ({ place }) => {
       <img src={place.photo?.images.large.url} alt='Picture for Hotels Not Available'/>
       
       <p className='hotelList'> Rating <spam>{place.rating} </spam></p>
+<<<<<<< HEAD
       <p className='hotelList'> <LocationOn /> <spam>{place.location.address1}  {place.location.city}  {place.location.country}
       </spam></p>
       <p className='hotelList'> <Phone /> <spam>{place.display_phone} </spam><button onClick={() => { window.open(place.url, "_blank"); }}> Website </button> </p>
+=======
+      <p className='hotelList'> <LocationOn /> <spam>{place.location.address1}  {place.location.city}  {place.location.country}  </spam></p>
+      <p className='hotelList'> <Phone /> <spam>{place.display_phone} </spam> <spam className='hotelListwebsite' onClick={() => { window.open(place.url, "_blank"); }}> website </spam> </p>
+>>>>>>> main
   
     </HotelWrapper>    
   )
