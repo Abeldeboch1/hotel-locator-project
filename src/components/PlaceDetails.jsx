@@ -4,8 +4,6 @@ import { LocationOn, Phone } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import  {lighten}  from '../Utils/styleMethods';
-
-
 const HotelWrapper = styled.header`
 border: 1px solid;
   padding: 10px;
@@ -21,6 +19,7 @@ border: 1px solid;
   .hotelListwebsite{
     color:green;
     padding-left:100px;
+
   }
   .hotelList{
   font-family: cursive;

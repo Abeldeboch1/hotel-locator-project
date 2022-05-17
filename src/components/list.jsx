@@ -12,7 +12,6 @@ const filterPosts = (places, query) => {
   if (!query) {
     return places;
   }
-
   return places.filter((post) => {
     const postName = post.location.city.toLowerCase();
     const postmanfilter = postName.includes(query);

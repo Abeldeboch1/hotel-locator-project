@@ -5,7 +5,6 @@ import GlobalStyle from '../globalStyle';
 // import Headerr from '../components/Headerr';
 // import Header from '../components/Header';
 import Footer from '../components/Footer';
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

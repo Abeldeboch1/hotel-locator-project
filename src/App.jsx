@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './Pages/Layout';
 import Home from './components/Home';
 import PostHotel from './Pages/PostHotel';
-import NotFound from './Pages/NotFound';
 
+import NotFound from './Pages/NotFound';
 const App = () => {
   return (
     <Routes>
@@ -17,7 +17,6 @@ const App = () => {
     </Routes>
   );
 };
-
 export default App;
 
 
