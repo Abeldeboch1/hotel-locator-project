@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header`
   background-color: #344;
   color: #fefefe;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 0.7rem 1.5rem ;
   & > a{
     text-decoration: none;
 }
@@ -27,7 +27,8 @@ const HeaderWrapper = styled.header`
 }
 .searchHotelButton{
   margin:0.5px;
-  padding:1px;
+  padding:2px;
+  margin-bottom:5px;
 }
 
 h2{

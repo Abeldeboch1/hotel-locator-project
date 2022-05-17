@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import GlobalStyle from '../globalStyle';
 // import Headerr from '../components/Headerr';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import Footer from '../components/Footer';
 const Wrapper = styled.div`
   display: flex;
