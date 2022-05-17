@@ -11,7 +11,7 @@ const HomeWrapper = styled.div`
     }
 `;
 const Home = () => {
-    const [locations, setLocations] = useState("Jacksonville, Fl");
+    const [locations, setLocations] = useState("Denver, CO");
     const [places, setPlaces] = useState([])
     const [coordinates, setCoordinates] = useState({ lat: 30.3321838, lng: -81.655651 });
     const runSearch = (id) => {
@@ -21,6 +21,7 @@ const Home = () => {
                 const lat = res.data[0].lat
                 const lon = res.data[0].lon
                 fetch(`https://bwreact-yelp-backend.herokuapp.com/api/search?term=Hotels&lat=${lat}&lon=${lon}&limit=50`)
+                    // fetch(process.env.REACT_APP_HOTEL_API_KEY)
                     .then((res) => res.json())
                     .then((data) => {
                         setPlaces(data.businesses);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+
 import { useNavigate } from "react-router-dom";
 const
   MapWrapper = styled.div`
@@ -9,16 +10,16 @@ const
   position: fixed; 
 `;
 const containerStyle = {
-  width: '1200px',
+  width: '1100px',
   height: '700px',
   position: 'fixed'
 };
 function Map({ setCoordinates, coordinates, places,id }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY
    
-})
+  })
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
   const hotelDetail = (id) => {
