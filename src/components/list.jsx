@@ -1,32 +1,32 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import PlaceDetails from './PlaceDetails';
 import styled from 'styled-components';
-import Header from './Header';
-import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
+// import { Link } from 'react-router-dom';
 const ListWrapper = styled.div`
 // height: '50vh',
 overflow: 'auto',
 `;
 
-const filterPosts = (places, query) => {
-  if (!query) {
-    return places;
-  }
+// const filterPosts = (places, query) => {
+//   if (!query) {
+//     return places;
+//   }
 
-  return places.filter((post) => {
-    const postName = post.location.city.toLowerCase();
-    const postmanfilter = postName.includes(query);
-    return postmanfilter
+//   return places.filter((post) => {
+//     const postName = post.location.city.toLowerCase();
+//     const postmanfilter = postName.includes(query);
+//     return postmanfilter
    
-  });
-};
+//   });
+// };
 const List = ({ places, locations, setLocations, runSearch }) => {
 
   const filteredPosts = places;
   console.log("businesses", places)
   return (
     <>
-      <Header
+      <SearchBar
         runSearch = {runSearch}
         filteredPosts = {filteredPosts}
         locations = {locations}

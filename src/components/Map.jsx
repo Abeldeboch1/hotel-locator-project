@@ -14,7 +14,7 @@ const containerStyle = {
   height: '530px',
   position: 'fixed'
 };
-function Map({ setCoordinates, coordinates, places,id }) {
+function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
@@ -22,7 +22,7 @@ function Map({ setCoordinates, coordinates, places,id }) {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
   const hotelDetail = (id) => {
-    navigate(`/PostHotel/${parseInt(id)}`);
+    navigate(`/PostHotel/${id}`);
   }
 
   return isLoaded ? (
@@ -44,7 +44,7 @@ function Map({ setCoordinates, coordinates, places,id }) {
             rotation: 0,
             scale: 2,
           }} 
-   
+          onMouseEnter={() => selectBrewery(id)}
           position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude }}
             onClick={() => {
               console.log("first")
