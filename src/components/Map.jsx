@@ -8,17 +8,17 @@ const
   height: 300px;
   position: fixed; 
 `;
-
 const containerStyle = {
-  width: '890px',
-  height: '530px',
+  width: '1200px',
+  height: '700px',
   position: 'fixed'
 };
 function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
-  })
+   
+})
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
   const hotelDetail = (id) => {
@@ -33,7 +33,6 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
         zoom={14}
         options={''}
       >
-        { /* Child components, such as markers, info windows, etc. */}
         {places.map((place) => (
           < Marker
           icon={{
@@ -52,14 +51,13 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
             }}
           />
         ))}
-
         {selected ? (
           <InfoWindow
             position={{ lat: selected.coordinates.latitude, lng: selected.coordinates.longitude }}
             onCloseClick={() => { setSelected(null); }}>
             <div onClick={() => hotelDetail(selected.location_id)}>
               <h2>Name:{selected.name}</h2>  <h5>Rating:{selected.rating} </h5>
-              <p> Phone Number: {selected.display_phone}</p>
+              <button> <p> Phone Number: {selected.display_phone}</p></button>
               <button onClick={() => { window.open(selected.url, "_blank"); }}> Website </button>
             </div>
           </InfoWindow>
