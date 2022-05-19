@@ -2,7 +2,10 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Pages/Layout';
 import Home from './components/Home';
-import PostHotel from './Pages/PostHotel';
+import HotelDetail from './Pages/HotelDetail';
+
+import NotFound from './Pages/NotFound';
+
 
 import NotFound from './Pages/NotFound';
 const App = () => {
@@ -10,8 +13,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home/>} /> 
-        {/* <Route path="PostHotel" exact element={<PostHotel/>} /> */}
-        <Route path="PostHotel/:id" element={<PostHotel />} />
+        <Route path="HotelDetail" exact element={<HotelDetail/>} />
+        {/* <Route path='hotel/:id' element={<hotelInformation />}/> */}
+        <Route path="HotelDetail/:id" element={<HotelDetail />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

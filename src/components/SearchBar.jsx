@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Announcer from '../announcer';
 
@@ -44,7 +44,7 @@ h2{
   }
 `;
 
-const Header = ({locations, setLocations,
+const SearchBar = ({locations, setLocations,
   runSearch, filteredPosts}) => {
   const onSubmit = (e) => {
     e.preventDefault();
@@ -72,4 +72,4 @@ const Header = ({locations, setLocations,
     </HeaderWrapper>
   );
 }
-export default Header;
+export default SearchBar;
