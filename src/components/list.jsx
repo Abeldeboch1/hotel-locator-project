@@ -1,32 +1,20 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 import PlaceDetails from './PlaceDetails';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-// import { Link } from 'react-router-dom';
 const ListWrapper = styled.div`
 // height: '50vh',
 overflow: 'auto',
 `;
-
-// const filterPosts = (places, query) => {
-//   if (!query) {
-//     return places;
-//   }
-
-//   return places.filter((post) => {
-//     const postName = post.location.city.toLowerCase();
-//     const postmanfilter = postName.includes(query);
-//     return postmanfilter
-   
-//   });
-// };
 const List = ({ places, locations, setLocations, runSearch }) => {
-
+  const [darkTheme, setDarkTheme] = useState(false)
+  const switchTheme = () => setDarkTheme(!darkTheme)
   const filteredPosts = places;
   console.log("businesses", places)
   return (
     <>
       <SearchBar
+      switchTheme={switchTheme} theme={darkTheme}
         runSearch = {runSearch}
         filteredPosts = {filteredPosts}
         locations = {locations}
@@ -39,9 +27,6 @@ const List = ({ places, locations, setLocations, runSearch }) => {
             id = {place.id}
             place={place}
               />
-            {/* <Link to={`/PostHotel/${i}`}><PlaceDetails 
-            place={place}
-              /></Link> */}
           </div>
         ))}
       </ListWrapper>
