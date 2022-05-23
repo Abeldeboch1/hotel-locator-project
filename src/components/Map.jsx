@@ -14,17 +14,17 @@ const MapWrapper = styled.div`
     } 
   } 
 `;
-
 const containerStyle = {
-  width: '890px',
-  height: '530px',
+  width: '1200px',
+  height: '700px',
   position: 'fixed'
 };
 function Map({ setCoordinates, coordinates, places, selectBrewery,id }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
-  })
+   
+})
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
 
@@ -36,7 +36,6 @@ function Map({ setCoordinates, coordinates, places, selectBrewery,id }) {
         zoom={14}
         options={''}
       >
-        { /* Child components, such as markers, info windows, etc. */}
         {places.map((place) => (
           < Marker
           icon={{
@@ -61,6 +60,8 @@ function Map({ setCoordinates, coordinates, places, selectBrewery,id }) {
             <div onClick={()=> navigate(`/HotelDetail/${selected.id}`)} >
               <h2>{selected.name}</h2>  <h5>Rating: {selected.rating} </h5>
               <button onClick={() => {window.open(selected.url, "_blank"); }}> Website </button>
+
+
             </div>
           </InfoWindow>
         ) :

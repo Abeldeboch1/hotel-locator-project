@@ -5,6 +5,8 @@ import Home from './components/Home';
 import HotelDetail from './Pages/HotelDetail';
 import NotFound from './Pages/NotFound';
 
+
+import NotFound from './Pages/NotFound';
 const App = () => {
   return (
     <Routes >
@@ -17,7 +19,6 @@ const App = () => {
     </Routes>
   );
 };
-
 export default App;
 
 
