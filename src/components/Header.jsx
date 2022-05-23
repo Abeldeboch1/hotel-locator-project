@@ -52,7 +52,7 @@ const Header = ({locations, setLocations,
   };
   return (
     <HeaderWrapper>
-        <h2>Hotel Search Map</h2>
+        <h2>Hotel Search On Map</h2>
       <form autoComplete="off" onSubmit={onSubmit} >
         <label htmlFor="header-search">
           <h4 className='searchHotelfor'> FOR: <spam className='searchHotel'>{locations}</spam></h4>

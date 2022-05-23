@@ -33,7 +33,7 @@ border: 1px solid;
   }
 `;
 
-const PlaceDetails = ({ place, id}) => {
+const PlaceDetails = ({ place, id, image_url}) => {
 
   const navigate = useNavigate();
   const displayHotel = (e) => {
@@ -42,17 +42,11 @@ const PlaceDetails = ({ place, id}) => {
   return (
      <HotelWrapper  onClick={displayHotel}>
       <h3 className='classNameTitle'> {place.name}</h3>
-      <img src={place.photo?.images.large.url} alt='Picture for Hotels Not Available'/>
+      <img src={image_url} alt='Picture for Hotels Not Available'/>
       
       <p className='hotelList'> Rating <spam>{place.rating} </spam></p>
-<<<<<<< HEAD
-      <p className='hotelList'> <LocationOn /> <spam>{place.location.address1}  {place.location.city}  {place.location.country}
-      </spam></p>
-      <p className='hotelList'> <Phone /> <spam>{place.display_phone} </spam><button onClick={() => { window.open(place.url, "_blank"); }}> Website </button> </p>
-=======
       <p className='hotelList'> <LocationOn /> <spam>{place.location.address1}  {place.location.city}  {place.location.country}  </spam></p>
       <p className='hotelList'> <Phone /> <spam>{place.display_phone} </spam> <spam className='hotelListwebsite' onClick={() => { window.open(place.url, "_blank"); }}> website </spam> </p>
->>>>>>> main
   
     </HotelWrapper>    
   )

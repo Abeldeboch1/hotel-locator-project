@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import List from './List';
 import Map from './Map';
 import getLocation from '../Utils/Location';
-import PostHotel from '../Pages/PostHotel'
+// import PostHotel from '../Pages/PostHotel'
 import LocationContext from '../context/LocationContext'
 
 const HomeWrapper = styled.div`
@@ -23,8 +23,8 @@ const Home = () => {
                 console.log(res.data)
                 const lat = res.data[0].lat
                 const lon = res.data[0].lon
+                //   fetch(`REACT_APP_X_RapidAPI_Key`)
                 fetch(`https://bwreact-yelp-backend.herokuapp.com/api/search?term=Hotels&lat=${lat}&lon=${lon}&limit=50`)
-                    // fetch(process.env.REACT_APP_HOTEL_API_KEY)
                     .then((res) => res.json())
                     .then((data) => {
                         setPlaces(data.businesses);
