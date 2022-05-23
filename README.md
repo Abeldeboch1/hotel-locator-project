@@ -58,6 +58,8 @@ For the release title, enter: Magtek Card Reader Middleware Release vX.X where x
 Copy the release notes into the release description textbox
 Attach the installer zip file in the upload area
 Click Publish Release
+## Citation
+- Please add a code comment referencing back to this repository when you use this code.
 
 # `Link to Wiki for additional info`
 
