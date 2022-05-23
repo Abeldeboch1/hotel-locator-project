@@ -2,18 +2,24 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import { useNavigate } from "react-router-dom";
-const
-  MapWrapper = styled.div`
+const MapWrapper = styled.div`
   width: 800px;
   height: 300px;
-  position: fixed; 
+  position: fixed;
+  Marker{
+    cursor: pointer;
+    opacity: 0.7;
+    &:hover{
+        opacity: 1;
+    } 
+  } 
 `;
 const containerStyle = {
   width: '1200px',
   height: '700px',
   position: 'fixed'
 };
-function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
+function Map({ setCoordinates, coordinates, places, selectBrewery,id }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAqI4tufG9iVawsC8vs3XKlWdvAyoSWPug"
@@ -21,9 +27,6 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
 })
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null)
-  const hotelDetail = (id) => {
-    navigate(`/PostHotel/${id}`);
-  }
 
   return isLoaded ? (
     <MapWrapper>
@@ -43,7 +46,6 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
             rotation: 0,
             scale: 2,
           }} 
-          onMouseEnter={() => selectBrewery(id)}
           position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude }}
             onClick={() => {
               console.log("first")
@@ -51,14 +53,15 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
             }}
           />
         ))}
-        {selected ? (
-          <InfoWindow
+      {selected ? (
+          <InfoWindow 
             position={{ lat: selected.coordinates.latitude, lng: selected.coordinates.longitude }}
-            onCloseClick={() => { setSelected(null); }}>
-            <div onClick={() => hotelDetail(selected.location_id)}>
-              <h2>Name:{selected.name}</h2>  <h5>Rating:{selected.rating} </h5>
-              <button> <p> Phone Number: {selected.display_phone}</p></button>
-              <button onClick={() => { window.open(selected.url, "_blank"); }}> Website </button>
+            onCloseClick={() => {setSelected(null); }}>
+            <div onClick={()=> navigate(`/HotelDetail/${selected.id}`)} >
+              <h2>{selected.name}</h2>  <h5>Rating: {selected.rating} </h5>
+              <button onClick={() => {window.open(selected.url, "_blank"); }}> Website </button>
+
+
             </div>
           </InfoWindow>
         ) :
@@ -70,6 +73,3 @@ function Map({ setCoordinates, coordinates, places,id ,selectBrewery}) {
 }
 
 export default React.memo(Map)
-
-
-// await axios.get(`https://geocode.maps.co/search?q=${location}`);

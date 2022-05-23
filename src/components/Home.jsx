@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
-// import { useState } from 'react';
 import styled from "styled-components";
-import List from "./list";
+import List from "./List";
 import Map from "./Map";
 import getLocation from "../Utils/Location";
-// import PostHotel from '../Pages/HotelDetail'
-import LocationContext from "../context/LocationContext";
-
+// import LocationContext from "../context/LocationContext";
 const HomeWrapper = styled.div`
   display: flex;
-  .Wrapp {
+  .listWrapp {
     width: 370px;
   }
 `;
 const Home = () => {
-  const [locations, setLocations] = useState("Jacksonville, Fl");
+  const [locations, setLocations] = useState("Jacksonville, FL");
   const [places, setPlaces] = useState([]);
-
   const [coordinates, setCoordinates] = useState({
     lat: 30.3321838,
     lng: -81.655651,
   });
-  // const [coordinates, setCoordinates] = useState({});
+
   const runSearch = () => {
     getLocation(locations)
       .then((res) => {
@@ -43,13 +39,12 @@ const Home = () => {
   };
   useEffect(() => {
     runSearch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <HomeWrapper container>
-        <LocationContext.Provider value={{ places: places }}>
+        {/* <LocationContext.Provider value={{ places: places }}> */}
           <div className="listWrapp">
             <List
               places={places}
@@ -65,7 +60,7 @@ const Home = () => {
               setCoordinates={setCoordinates}
             />
           </div>
-        </LocationContext.Provider>
+        {/* </LocationContext.Provider> */}
       </HomeWrapper>
     </>
   );
