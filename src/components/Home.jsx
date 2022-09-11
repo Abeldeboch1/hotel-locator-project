@@ -67,3 +67,7 @@ const Home = () => {
 };
 
 export default Home;
+
+ //?  https://docs.tomorrow.io/reference/welcome
+//? https://docs.tomorrow.io/recipes/build-your-own-weather-app-with-one-call
+//?https://openweathermap.org/api/one-call-3

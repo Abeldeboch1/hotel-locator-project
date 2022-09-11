@@ -28,7 +28,6 @@ border: 1px solid;
    color:#ff4500;
    margin:1px;
   }
-  }
   ${(props) =>
     props.isSelected &&
     css`
